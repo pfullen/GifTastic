@@ -7,13 +7,13 @@
 <!-- js Query min    -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- like to js file  -->
-<script src='/assets/js/giftastic.js'> </script>
+<script src='./assets/js/giftastic.js'> </script>
  <!-- css reset-->
 <link rel="stylesheet" type="text/css" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
     <!-- Added a link to Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- custom css-->
-<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 
 <!-- Favicon   -->
 <link rel="icon" 
@@ -33,13 +33,11 @@
 	<div class="row">
 		<div class="col-md-8">
 			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">
-						Panel title
-					</h3>
+				<div class="panel-heading" id = "button-container">
+					
 				</div>
-				<div class="panel-body">
-					Panel content
+				<div class="panel-body" id="image-container">
+					
 				</div>
 				<div class="panel-footer">
 					Panel footer
@@ -55,11 +53,7 @@
 					</label>
 					<input type="text" class="form-control" id="foodInput" />
 				</div>
-				
-				
-				
-				
-				<button type="submit" class="btn btn-default">
+				<button type="submit" class="btn btn-default" id="foodFormSubmit">
 					Submit
 				</button>
 			</form>
