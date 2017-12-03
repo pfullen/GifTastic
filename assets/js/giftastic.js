@@ -62,6 +62,20 @@ $(document).on("click",".food-buttons", function(e) {
 	  method: 'GET',
 	}).done(function(result) {
 	  console.log(result.data);
+
+	  var gifs = result.data;
+	  gifs.forEach(function(gif, i) {
+	  	console.log(gif.url);
+	  	var gifUrl = gif.url
+	  	var gifImage = $("<img>");
+	  	gifImage.attr("src", gifUrl);
+
+	  	console.log(gifImage);
+	  //	image.attr("id", food + "img#" + i);
+	  	$('#image-container').prepend(gifImage);
+	  }); 
+
+
 	}).fail(function(err) {
 	  throw err;
 	});
