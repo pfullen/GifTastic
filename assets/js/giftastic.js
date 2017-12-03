@@ -8,7 +8,7 @@ function putButtonsOnScreen () {
 	$("#button-container").html("");
 	foods.forEach(function(food, index) {
 		var button = $("<button>");
-		button.attr("class", "food-buttons");
+		button.attr("class", "btn btn-primary food-buttons");
 		button.attr("id", food);
 		button.text(food);
 		$("#button-container").append(button); 
@@ -61,19 +61,21 @@ $(document).on("click",".food-buttons", function(e) {
 	  url: queryURL,
 	  method: 'GET',
 	}).done(function(result) {
-	  console.log(result.data);
+	  console.log(result);
 
-	  var gifs = result.data;
+	  var gifs = result.data;    
 	  gifs.forEach(function(gif, i) {
-	  	console.log(gif.url);
-	  	var gifUrl = gif.url
+
+	  	
+	  	var gifUrl = gif.images.downsized_medium.url;
 	  	var gifImage = $("<img>");
 	  	gifImage.attr("src", gifUrl);
 
-	  	console.log(gifImage);
+	  	console.log(gifUrl);
 	  //	image.attr("id", food + "img#" + i);
 	  	$('#image-container').prepend(gifImage);
-	  }); 
+	  	
+	   }); 
 
 
 	}).fail(function(err) {

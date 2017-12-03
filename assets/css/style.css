@@ -1,0 +1,48 @@
+body {
+	background-color: black;
+}
+
+#image-container img {
+	height: 180px;
+	width: 180px;
+	padding: 10px;
+}
+
+#image-container {
+	min-height: 300px;
+}
+
+#main {
+	width: 95%;
+}
+
+ button {
+	margin: 5px;
+}
+
+.input {
+	width: 60%;
+}
+
+#main-header {
+	color: white;
+	background-color: black;
+}
+
+#main-header img {
+	height: 100px; 
+	
+ }
+
+label {
+	color: white;
+}
+
+#button-container {
+	background-color: darkred;
+}
+
+.footer {
+	background-color: darkred;
+	height: 30px;
+}
