@@ -9,7 +9,7 @@ function putButtonsOnScreen () {
 	foods.forEach(function(food, index) {
 		var button = $("<button>");
 		button.attr("class", "food-buttons");
-		button.attr("id", "item#: "+ index);
+		button.attr("id", food);
 		button.text(food);
 		$("#button-container").append(button); 
     
@@ -43,7 +43,29 @@ $('#foodFormSubmit').on("click", function(e) {
 
 // write click event to get 10 gifs when a food button is clicked
 
-//$(".food-buttons").on("click", function )
+$(document).on("click",".food-buttons", function(e) {
+	console.log(e.target.id);
+	var food = e.target.id;
+	 var apikey = '4ZsNr03jo4iJ0MnrP3ROnvU1geb3Orfd';
+	var queryURL = "https://api.giphy.com/v1/gifs/search"
+	
+	// Use $.param to nicely format the url sting
+	queryURL += "?" + $.param({           
+		'q': food,
+		'api_key': apikey,
+		'limit': 10
+	});
+
+	console.log(`This is the formated URL string:${queryURL}`);
+	$.ajax({
+	  url: queryURL,
+	  method: 'GET',
+	}).done(function(result) {
+	  console.log(result.data);
+	}).fail(function(err) {
+	  throw err;
+	});
+});  // end of on click --> food button
 
 // write click event for toggling between annimated and static gif
 
