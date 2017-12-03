@@ -11,8 +11,7 @@ function putButtonsOnScreen () {
 		button.attr("class", "btn btn-primary food-buttons");
 		button.attr("id", food);
 		button.text(food);
-		$("#button-container").append(button); 
-    
+		$("#button-container").append(button);     
 });
 };
 
@@ -31,8 +30,7 @@ $('#foodFormSubmit').on("click", function(e) {
 	var newFood = $('#foodInput').val();
 	foods.push(newFood);
      console.log("Here is the new food list");
-
-	putButtonsOnScreen();
+  	putButtonsOnScreen();
 	$('#foodInput').val("");
 });
 
@@ -67,11 +65,16 @@ $(document).on("click",".food-buttons", function(e) {
 	  gifs.forEach(function(gif, i) {
 
 	  	
-	  	var gifUrl = gif.images.downsized_medium.url;
+	  	var gifStillUrl = gif.images.original_still.url;
+	  	var gifAnimateUrl = gif.images.original.url;
 	  	var gifImage = $("<img>");
-	  	gifImage.attr("src", gifUrl);
+	  	gifImage.attr("src", gifStillUrl);
+	  	gifImage.attr("data-still", gif.images.original_still.url);
+	  	gifImage.attr("data-animate", gif.images.original.url);
+	  	gifImage.attr("data-state", "still");
+	  	gifImage.attr("class", 'gif');
 
-	  	console.log(gifUrl);
+	  	console.log(gifStillUrl);
 	  //	image.attr("id", food + "img#" + i);
 	  	$('#image-container').prepend(gifImage);
 	  	
@@ -85,7 +88,27 @@ $(document).on("click",".food-buttons", function(e) {
 
 // write click event for toggling between annimated and static gif
 
+$(document).on("click","img", function (e) {
+	console.log(e);
+	console.log(this);
+	var state = $(this).attr("data-state");
 
+	//console.log("This is the image state:" + state);
+      // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+      // Then, set the image's data-state to animate
+      // Else set src to the data-still value
+      if (state === "still") {
+      	 console.log('The image is :' + state);
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+        console.log("This is the new state: " + state);
+        console.log(this);
+      } else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+      }
+  //    	console.log("This is the image state:" + state);
+  })
 
 
 });
