@@ -19,7 +19,7 @@ function putButtonsOnScreen () {
 // Itereate through the list and create buttons on the screen for each item
 
 
-var foods = ["Pizza", "Refried Beans", "Curry", "Turkey Sub", "Potato Salad"];
+var foods = ["Pizza", "BBQ", "Pasta", "Turkey Sub", "Tacos"];
 putButtonsOnScreen();
 
 // wait for submit.  When submit is clicked create a new button for 
@@ -42,6 +42,7 @@ $('#foodFormSubmit').on("click", function(e) {
 // write click event to get 10 gifs when a food button is clicked
 
 $(document).on("click",".food-buttons", function(e) {
+
 	console.log(e.target.id);
 	var food = e.target.id;
 	 var apikey = '4ZsNr03jo4iJ0MnrP3ROnvU1geb3Orfd';
@@ -59,25 +60,35 @@ $(document).on("click",".food-buttons", function(e) {
 	  url: queryURL,
 	  method: 'GET',
 	}).done(function(result) {
+		$('#image-container').html(" ");
 	  console.log(result);
 
 	  var gifs = result.data;    
-	  gifs.forEach(function(gif, i) {
+	   gifs.forEach(function(gif, i) {
 
 	  	
 	  	var gifStillUrl = gif.images.original_still.url;
 	  	var gifAnimateUrl = gif.images.original.url;
+	  	var rating = gif.rating;
+	  	rating = rating.toUpperCase();
+	  	console.log(rating);
+	  	var figure = $("<figure>");
+	  	figure.attr("class", "figure")
 	  	var gifImage = $("<img>");
 	  	gifImage.attr("src", gifStillUrl);
 	  	gifImage.attr("data-still", gif.images.original_still.url);
 	  	gifImage.attr("data-animate", gif.images.original.url);
 	  	gifImage.attr("data-state", "still");
-	  	gifImage.attr("class", 'gif');
-
-	  	console.log(gifStillUrl);
-	  //	image.attr("id", food + "img#" + i);
-	  	$('#image-container').prepend(gifImage);
+	  	gifImage.attr("class", 'figure-img img-fluid');
 	  	
+	  	console.log(gifStillUrl);
+	  	figure.append(gifImage);
+	  	figure.append(`<figcation class='figure-cation fig-cap text-center'> Rated: ${rating}</figcaption>`)
+	  //	image.attr("id", food + "img#" + i);
+	  	console.log("<figure class='figure'>" + gifImage + "</figure>")
+  	$('#image-container').append(figure ) ; //+ "<p> Rating: "+ rating + "</p>" );
+//	  $('#image-container').append("<figcaption>A caption for the above image.</figcaption>" );
+
 	   }); 
 
 

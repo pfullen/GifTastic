@@ -3,18 +3,17 @@ body {
 }
 
 #image-container img {
-	height: 180px;
-	width: 180px;
+	
 	padding: 10px;
 }
 
 #image-container {
 	min-height: 200px;
-	
+	margin: 0 auto;	
 }
 
 #image-container img {
-padding-left: 25px;
+
 }
 
 #main {
@@ -50,4 +49,45 @@ label {
 .footer {
 	background-color: darkred;
 	height: 30px;
+}
+
+.figure-caption {
+	color: black;
+	text-align: center;
+	padding-left: 125px;
+	background-color: white;
+	padding: 10px;
+}
+
+img {
+	
+}
+
+
+
+.figure {
+	display: inline-block;
+	background-color: black;
+	text-align: center;
+	color:white ;
+	padding: 10px;
+	border: 2px solid white;
+
+	
+	
+	
+}
+
+.figure-img {
+	height: 160px;
+	width: 160px;
+	display: block;
+
+
+}
+
+fig-cap {
+	color:black;
+	background-color: white;
+	padding:10px;
 }
